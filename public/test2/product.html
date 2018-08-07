@@ -14,9 +14,10 @@
 </head>
 
 <body>
-  <!-- 左侧侧边栏样式 -->
-  <div class="lt-aside">
-    <!-- 大标题 -->
+
+  <!-- 左侧侧边栏 -->
+  <div class="lt_aside">
+    <!-- 标题 -->
     <div class="brand">
       <a href="index.html">黑马24期</a>
     </div>
@@ -28,51 +29,66 @@
     <!-- 导航 -->
     <div class="nav">
       <ul>
-        <li><a href="user.html"><i class="glyphicon glyphicon-user"></i> <span>用户管理</span></a></li>
-        <li><a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i> <span>分类管理</span></a>
-          <div class="child" style="display: none">
-            <a href="first.html">一级分类</a>
-            <a href="second.html">二级分类</a>
+        <li>
+          <a href="user.html">
+            <i class="glyphicon glyphicon-user"></i> 用户管理</a>
+        </li>
+        <li>
+          <a href="javascript:;" id="category">
+            <i class="glyphicon glyphicon-list"></i> 分类管理</a>
+          <div class="child" style="display: none;">
+            <ul>
+              <li>
+                <a href="first.html">一级分类</a>
+              </li>
+              <li>
+                <a href="second.html">二级分类</a>
+              </li>
+            </ul>
           </div>
         </li>
-        <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i> <span>商品管理</span></a></li>
+        <li>
+          <a href="product.html" class="current">
+            <i class="glyphicon glyphicon-tags"></i> 商品管理</a>
+        </li>
       </ul>
     </div>
   </div>
-
-  <!-- 右侧主体布局 -->
-  <div class="lt-main">
-    <!-- 上面的头部 -->
-    <div class="lt-topbar">
-      <a href="#" class="pull-left icon-menu"><i class="glyphicon glyphicon-align-justify"></i></a>
-      <a href="#" class="pull-right icon-logout"><i class="glyphicon glyphicon-log-out"></i></a>
+  <!-- 右侧主体内容 -->
+  <div class="li_main">
+    <!-- 顶部 -->
+    <div class="li_topbar">
+      <a href="#" class="pull-left icon_menu">
+        <i class="glyphicon glyphicon-align-justify"></i>
+      </a>
+      <a href="#" class="pull-right icon_logout" >
+        <i class="glyphicon glyphicon-log-out"></i>
+      </a>
     </div>
-    <!-- 内容 -->
+    <!-- 主体内容 -->
     <div class="container-fluid">
-      <!-- 面包屑导航 -->
-      <ol class="breadcrumb mt-20">
-          <li><a href="javascript:;">管理系统</a></li>
-          <li class="active">首页</li>
-        </ol>
+      <ol class="breadcrumb mt_20">
+        <li>
+          <a href="#">管理系统</a>
+        </li>
+        <li class="active">商品管理</li>
+      </ol>
     </div>
   </div>
-
-
-
-  <!-- 退出模态框 tabindex可以设置 tab键的顺序,-1排除在tab键 选中范围之外 -->
+  <!-- 模态框 -->
   <div class="modal fade" tabindex="-1" id="logoutModal">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">温馨提示</h4>
           </div>
           <div class="modal-body">
-            <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？&hellip;</p>
+            <p class="red"><i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" id="logoutBth">退出</button>
+            <button type="button" class="btn btn-primary logoutBtn">退出</button>
           </div>
         </div>
       </div>
