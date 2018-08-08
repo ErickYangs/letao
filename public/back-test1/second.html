@@ -76,6 +76,55 @@
           <li class="active">二级分类</li>
         </ol>
       </div>
+
+      <!-- 添加按钮 -->
+      <button class="btn btn-default">添加分类</button>
+
+      <!-- 表格 -->
+      <div class="lt_cont mt_20">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th width='10%'>序号</th>
+              <th width='30%'>一级分类名</th>
+              <th width='30%'>二级分类名称</th>
+              <th width='30%'>二级分类LOGO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>户外管</td>
+              <td>阿萨德2</td>
+              <td><img src="../mobile/images/brand1.png" alt=""></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 分页 -->
+      <div class="lt_page pull-right">
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li class="active">
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 
@@ -104,7 +153,40 @@
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
   <script src="js/common.js"></script>
+  <script type="text/html" id="tmp">
+    {{each list v i}}
+      <tr>
+        <td>{{v.id}}</td>
+        <td>{{v.categoryName}}</td>
+        <td>{{v.brandName}}</td>
+        <td>
+          <img src="..{{v.brandLogo}}" alt="">
+        </td>
+      </tr>
+    {{/each}}
+  </script>
+  <script>
+   $(function () {
+     // 1- 渲染数据
+     function render() {
+       $.ajax({
+         url: '/category/querySecondCategoryPaging',
+         type: 'get',
+         data: {
+           page: 1,
+           pageSize: 10
+         },
+         dataType: 'json',
+         success: function (info) {
+           $('tbody').html(template('tmp', {list: info.rows}));
+         }
+       });
+     }
+     render();
+   });
+  </script>
 </body>
 
 </html>

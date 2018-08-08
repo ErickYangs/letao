@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="lib/nprogress/nprogress.css">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/common.css">
 </head>
 
@@ -76,6 +76,51 @@
           <li class="active">一级分类</li>
         </ol>
       </div>
+
+      <!-- 添加按钮 -->
+      <button class="btn btn-default">添加分类</button>
+
+      <!-- 表格 -->
+      <div class="lt_cont mt_20">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th width='30%'>序号</th>
+              <th width='70%'>一级分类名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>户外管</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 分页 -->
+      <div class="lt_page pull-right">
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li class="active">
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 
@@ -104,7 +149,36 @@
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
   <script src="js/common.js"></script>
+  <script type="text/html" id="tmp">
+    {{each list v i}}
+      <tr>
+        <td>{{v.id}}</td>
+        <td>{{v.categoryName}}</td>
+      </tr>
+    {{/each}}
+  </script>
+  <script>
+    $(function () {
+      //1- 渲染数据
+      function render() {
+        $.ajax({
+          url: '/category/queryTopCategoryPaging',
+          type: 'get',
+          data: {
+            page: 1,
+            pageSize: 10
+          },
+          dataType: 'json',
+          success: function (info) {
+            $('tbody').html(template('tmp',{list: info.rows}));
+          }
+        });
+      }
+      render();
+    });
+  </script>
 </body>
 
 </html>

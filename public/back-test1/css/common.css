@@ -132,3 +132,15 @@ a:active {
   margin-top: 20px;
 }
 
+.lt-main .lt_cont table thead th,
+.lt-main .lt_cont table tbody td {
+  text-align: center;
+  vertical-align: middle;
+}
+.lt-main .lt_cont table img {
+  width: 80px;
+  height: 50px;
+}
+.mt_20 {
+  margin-top: 20px;
+}
