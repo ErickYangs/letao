@@ -138,3 +138,10 @@ a:active {
   text-align: center;
   line-height: 50px;
 }
+
+
+.echarts_1,
+.echarts_2 {
+  width: 48%;
+  height: 400px;
+}
