@@ -33,4 +33,52 @@ $(function () {
     });
   }
 
+  $('#addBtn').click(function () {
+    $('#addModal').modal('show');
+  });
+
+
+  // 3- 使用表单校验插件
+  $('#form').bootstrapValidator({
+     // 配置图标
+     feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    //
+    fields: {
+      categoryName: {
+        validators: {
+          notEmpty: {
+            message: '一级分类不能为空'
+          }
+        }
+      }
+    }
+  });
+
+  // 4- 注册表单成功事件,
+  $('#form').on('success.form.bv',function (e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: '/category/addTopCategory',
+      type: 'post',
+      data: $('#form').serialize(),
+      dataType: 'json',
+      success: function (info) {
+        if (info.success) {
+          // 添加成功
+          // 关闭模态框
+          $('#addModal').modal('hide');
+          // 页面重新渲染第一页
+          currentPage = 1;
+          render();
+          // 重置模态框
+          $('#form').data('bootstrapValidator').resetForm(true);
+        }
+      }
+    });
+  })
 });

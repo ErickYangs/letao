@@ -77,7 +77,7 @@
       </ol>
 
       <div class="lt_content">
-        <button class="btn btn-default">添加分类</button>
+        <button id="addBtn" class="btn btn-default">添加分类</button>
         <!-- 表格 -->
         <table class="mt-20 table table-bordered table-hover">
           <thead>
@@ -123,6 +123,31 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
           <button type="button" class="btn btn-primary" id="logoutBth">退出</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 添加模态框 -->
+  <div class="modal fade" tabindex="-1" id="addModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form id="form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">添加分类</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" id="">添加</button>
+        </div>
+      </form>
       </div>
     </div>
   </div>
