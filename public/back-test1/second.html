@@ -78,7 +78,7 @@
       </div>
 
       <!-- 添加按钮 -->
-      <button class="btn btn-default">添加分类</button>
+      <button class="btn btn-default" id="addBtn">添加分类</button>
 
       <!-- 表格 -->
       <div class="lt_cont mt_20">
@@ -96,34 +96,19 @@
               <td>1</td>
               <td>户外管</td>
               <td>阿萨德2</td>
-              <td><img src="../mobile/images/brand1.png" alt=""></td>
+              <td>
+                <img src="../mobile/images/brand1.png" alt="">
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- 分页 -->
-      <div class="lt_page pull-right">
-        <nav>
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">1</a>
-            </li>
-            <li class="active">
-              <a href="#">2</a>
-            </li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div class="text-right">
+        <ul id="pagination">
+
+        </ul>
       </div>
     </div>
   </div>
@@ -149,44 +134,85 @@
       </div>
     </div>
   </div>
+
+  <!-- 添加的模态框 -->
+  <div class="modal fade" tabindex="-1" id="addModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form id="form">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">添加分类</h4>
+          </div>
+          <div class="modal-body">
+            <!-- 一级分类 -->
+            <div class="form-group">
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span id="downText">请选择一级分类</span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" id="downList">
+                    <li><a href="#">游泳馆</a></li>
+                  </ul>
+                </div>
+              <input type="hidden" name="categoryId">
+
+              <input type="hidden" name="hot" id="1">
+            </div>
+            <!-- 二级分类 -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="brandName" placeholder="请输入二级分类">
+            </div>
+            <!-- logo -->
+            <div class="form-group">
+              <label for="files" class="btn btn-default">上传文件</label>
+              <input type="file" id="files" data-url='/category/addSecondCategoryPic' name="pic1" style="display: none;">
+            </div>
+            <div class="form-group" id="imgBox">
+                <img src="./images/none.png" style="width: 100px;" alt="">
+                <input type="hidden" name="brandLogo">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">确定</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/html" id="tmp">
+    {{each rows v i}}
+    <tr>
+      <td>{{i + 1 + (page - 1) * size}}</td>
+      <td>{{v.categoryName}}</td>
+      <td>{{v.brandName}}</td>
+      <td>
+        <img src="..{{v.brandLogo}}" alt="">
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <script type="text/html" id="tmp2">
+    {{each rows v i}}
+      <li><a href="#" data-id='{{v.id}}'>{{v.categoryName}}</a></li>
+    {{/each}}
+  </script>
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
   <script src="lib/artTemplate/template-web.js"></script>
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
   <script src="js/common.js"></script>
-  <script type="text/html" id="tmp">
-    {{each list v i}}
-      <tr>
-        <td>{{v.id}}</td>
-        <td>{{v.categoryName}}</td>
-        <td>{{v.brandName}}</td>
-        <td>
-          <img src="..{{v.brandLogo}}" alt="">
-        </td>
-      </tr>
-    {{/each}}
-  </script>
-  <script>
-   $(function () {
-     // 1- 渲染数据
-     function render() {
-       $.ajax({
-         url: '/category/querySecondCategoryPaging',
-         type: 'get',
-         data: {
-           page: 1,
-           pageSize: 10
-         },
-         dataType: 'json',
-         success: function (info) {
-           $('tbody').html(template('tmp', {list: info.rows}));
-         }
-       });
-     }
-     render();
-   });
-  </script>
+  <script src="js/second.js"></script>
+
 </body>
 
 </html>
