@@ -150,14 +150,17 @@
             <!-- 一级分类 -->
             <div class="form-group">
               <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span id="downText">请选择一级分类</span>
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" id="downList">
-                    <li><a href="#">游泳馆</a></li>
-                  </ul>
-                </div>
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                  <span id="downText">请选择一级分类</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="downList">
+                  <li>
+                    <a href="#">游泳馆</a>
+                  </li>
+                </ul>
+              </div>
               <input type="hidden" name="categoryId">
 
               <input type="hidden" name="hot" id="1">
@@ -172,8 +175,8 @@
               <input type="file" id="files" data-url='/category/addSecondCategoryPic' name="pic1" style="display: none;">
             </div>
             <div class="form-group" id="imgBox">
-                <img src="./images/none.png" style="width: 100px;" alt="">
-                <input type="hidden" name="brandLogo">
+              <img src="./images/none.png" style="width: 100px;" alt="">
+              <input type="hidden" name="brandLogo">
             </div>
           </div>
           <div class="modal-footer">
@@ -199,7 +202,9 @@
   </script>
   <script type="text/html" id="tmp2">
     {{each rows v i}}
-      <li><a href="#" data-id='{{v.id}}'>{{v.categoryName}}</a></li>
+    <li>
+      <a href="#" data-id='{{v.id}}'>{{v.categoryName}}</a>
+    </li>
     {{/each}}
   </script>
   <script src="lib/jquery/jquery.min.js"></script>

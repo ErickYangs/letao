@@ -130,38 +130,76 @@
     </div>
   </div>
   <!-- 添加模态框 -->
-  <div class="modal fade" tabindex="-1" id="logoutModal">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
+  <div class="modal fade" tabindex="-1" id="addModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form id="form">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title">温馨提示</h4>
+            <h4 class="modal-title">添加分类</h4>
           </div>
           <div class="modal-body">
-            <p class="red">
-              <i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？</p>
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                  <span id="downText">请选择一级分类</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="downList">
+                  <li>
+                    <a href="#">流浪管</a>
+                  </li>
+                </ul>
+              </div>
+              <input type="hidden" name="categoryId">
+              <input type="hidden" name="hot" value="1">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="brandName" placeholder="请输入二级分类">
+            </div>
+
+            <div class="form-group">
+              <label for="files" class="btn btn-default">上传文件</label>
+              <input type="file" id="files" name="pic1" data-url='/category/addSecondCategoryPic' style="display: none;">
+            </div>
+            <div class="form-group" id="imgBox">
+              <img src="./images/none.png" style="width: 100px;" >
+              <input type="hidden" name="brandLogo">
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary logoutBtn">退出</button>
+            <button type="submit" class="btn btn-primary">确定</button>
           </div>
-        </div>
+        </form>
+
       </div>
     </div>
+  </div>
 
 
   <script type="text/html" id="tmp">
     {{each rows v i}}
-      <tr>
-        <td>{{i + 1 + (page - 1) * size}}</td>
-        <td>{{v.categoryName}}</td>
-        <td>{{v.brandName}}</td>
-        <td>
-          <img src="..{{v.brandLogo}}" alt="">
-        </td>
-      </tr>
+    <tr>
+      <td>{{i + 1 + (page - 1) * size}}</td>
+      <td>{{v.categoryName}}</td>
+      <td>{{v.brandName}}</td>
+      <td>
+        <img src="..{{v.brandLogo}}" alt="">
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <script type="text/html" id="tmp2">
+    {{each rows v i}}
+      <li data-id='{{v.id}}'>
+        <a href="#">{{v.categoryName}}</a>
+      </li>
     {{/each}}
   </script>
   <script src="lib/jquery/jquery.min.js"></script>
@@ -170,11 +208,12 @@
   <script src="lib/nprogress/nprogress.js"></script>
   <script src="lib/artTemplate/template-web.js"></script>
   <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
   <script src="js/common.js"></script>
   <script src="js/second.js"></script>
 
   <script>
-   
   </script>
 </body>
 
