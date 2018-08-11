@@ -195,8 +195,8 @@ $(function () {
     // &picAddr2=xx&picName2=xx
     // &picAddr3=xx&picName3=xx
     str += '&picAddr1='+ picArr[2].picAddr +'&picName1='+picArr[2].picName;
-    str += '&picAddr1='+ picArr[1].picAddr +'&picName1='+picArr[1].picName;
-    str += '&picAddr1='+ picArr[0].picAddr +'&picName1='+picArr[0].picName;
+    str += '&picAddr2='+ picArr[1].picAddr +'&picName2='+picArr[1].picName;
+    str += '&picAddr3='+ picArr[0].picAddr +'&picName3='+picArr[0].picName;
 
     $.ajax({
       url: '/product/addProduct',
@@ -212,6 +212,7 @@ $(function () {
           $('#form').data("bootstrapValidator").resetForm(true);
           $('#imgBox img').remove();
           $('#downText').text('请选择二级分类');
+          picArr = [];
         }
       }
     });

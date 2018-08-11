@@ -103,6 +103,7 @@ a:active {
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 555;
   transition: all 1s;
 }
 .lt_main .topbar a {
@@ -128,4 +129,9 @@ a:active {
 .lt_cont table img {
   width: 90px;
   height: 50px;
+}
+.lt_content .echarts_1,
+.lt_content .echarts_2 {
+  width: 48%;
+  height: 400px;
 }

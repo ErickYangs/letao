@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,9 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/common.css">
 </head>
+
 <body>
-  
+
   <!-- 左侧侧边栏 -->
   <div class="lt_aside">
     <!-- 标题 -->
@@ -27,16 +29,28 @@
     <!-- 导航 -->
     <div class="nav">
       <ul>
-        <li><a href="user.html"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>
-        <li><a href="javascript:;" id="category"><i class="glyphicon glyphicon-list"></i> 分类管理</a>
+        <li>
+          <a href="user.html">
+            <i class="glyphicon glyphicon-user"></i> 用户管理</a>
+        </li>
+        <li>
+          <a href="javascript:;" id="category">
+            <i class="glyphicon glyphicon-list"></i> 分类管理</a>
           <div class="child">
             <ul>
-              <li><a href="first.html" class="current">一级分类</a></li>
-              <li><a href="second.html">二级分类</a></li>
+              <li>
+                <a href="first.html" class="current">一级分类</a>
+              </li>
+              <li>
+                <a href="second.html">二级分类</a>
+              </li>
             </ul>
           </div>
         </li>
-        <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i> 商品管理</a></li>
+        <li>
+          <a href="product.html">
+            <i class="glyphicon glyphicon-tags"></i> 商品管理</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -44,21 +58,27 @@
   <div class="lt_main">
     <!-- 顶部 -->
     <div class="topbar">
-      <a href="javascript:;" class="pull-left icon_menu"><i class="glyphicon glyphicon-align-justify"></i> </a>
-      <a href="javascript:;" class="pull-right icon_logout"><i class="glyphicon glyphicon-log-out"></i> </a>
+      <a href="javascript:;" class="pull-left icon_menu">
+        <i class="glyphicon glyphicon-align-justify"></i>
+      </a>
+      <a href="javascript:;" class="pull-right icon_logout">
+        <i class="glyphicon glyphicon-log-out"></i>
+      </a>
     </div>
     <!-- 主体内容 -->
     <div class="container-fluid">
       <ol class="breadcrumb mt_20">
-        <li><a href="#">管理系统</a></li>
+        <li>
+          <a href="#">管理系统</a>
+        </li>
         <li>分类管理</li>
         <li class="active">一级分类</li>
       </ol>
 
-      <button class="btn btn-default">添加分类</button>
-      
-       <!-- 表格信息 -->
-       <div class="lt_cont mt_20">
+      <button class="btn btn-default" id="addBtn">添加分类</button>
+
+      <!-- 表格信息 -->
+      <div class="lt_cont mt_20">
         <table class="table table-bordered">
           <thead>
             <tr class="text-center">
@@ -66,33 +86,14 @@
               <th width='70%'>一级分类名</th>
             </tr>
           </thead>
-          <tbody> 
-            <tr>
-              <td>1</td>
-              <td>户外管</td>
-            </tr>
-            
+          <tbody>
+
           </tbody>
         </table>
       </div>
       <!-- 分页 -->
-      <div class="page pull-right">
-        <nav>
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li  class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div class="text-right">
+        <ul id="pagination"></ul>
       </div>
     </div>
   </div>
@@ -101,11 +102,14 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
           <h4 class="modal-title">温馨提示</h4>
         </div>
         <div class="modal-body">
-          <p class="red"><i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？</p>
+          <p class="red">
+            <i class="glyphicon glyphicon-info-sign"></i> 您确定要退出后台管理系统吗？</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -115,35 +119,49 @@
     </div>
   </div>
 
+  <!-- 添加的模态框 -->
+  <div class="modal fade" id="addModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form id='form'>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">添加分类</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">确定</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
   <script src="lib/artTemplate/template-web.js"></script>
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/first.js"></script>
   <script type="text/html" id="tmp">
-    {{each list v i}}
-      <tr>
-        <td>{{v.id}}</td>
-        <td>{{v.categoryName}}</td>
-      </tr>
+    {{each rows v i}}
+    <tr>
+      <td>{{i + 1 + (page-1) * size}}</td>
+      <td>{{v.categoryName}}</td>
+    </tr>
     {{/each}}
   </script>
   <script>
-    $(function () {
-      $.ajax({
-        url: '/category/queryTopCategoryPaging',
-        data: {
-          page: 1,
-          pageSize: 10
-        },
-        dataType: 'json',
-        type: 'get',
-        success: function (info) {
-          $('tbody').html(template('tmp',{list: info.rows}));
-        }
-      });
-    });
   </script>
 </body>
+
 </html>
